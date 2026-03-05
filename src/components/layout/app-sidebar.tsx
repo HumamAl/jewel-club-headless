@@ -13,6 +13,10 @@ import {
   User,
   ArrowRight,
   Github,
+  Gem,
+  Users,
+  Gift,
+  Monitor,
 } from "lucide-react";
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -24,18 +28,17 @@ import {
 
 const navItems = [
   { href: "/", label: "Dashboard", icon: LayoutDashboard },
-  // Dashboard Builder agent: add 3-5 feature page nav items here.
-  // Example: { href: "/orders", label: "Orders", icon: ShoppingCart },
+  { href: "/members", label: "Members", icon: Users },
+  { href: "/collections", label: "Collections", icon: Gem },
+  { href: "/rewards", label: "Rewards", icon: Gift },
+  { href: "/channels", label: "Channels", icon: Monitor },
 ];
 
 function SidebarLogo({ collapsed }: { collapsed: boolean }) {
   return (
     <div className="p-4 border-b border-border/60 flex items-center gap-3">
-      {/* Agent: replace the letter icon with a relevant Lucide icon if appropriate */}
       <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-        <span className="text-primary font-bold text-sm font-mono">
-          {APP_CONFIG.appName.charAt(0)}
-        </span>
+        <Gem className="w-4 h-4 text-primary" />
       </div>
       {!collapsed && (
         <div className="overflow-hidden">
@@ -73,8 +76,8 @@ function SidebarNav({ collapsed }: { collapsed: boolean }) {
             className={cn(
               "flex items-center gap-3 px-3 rounded-md text-sm transition-colors duration-100",
               isActive
-                ? "bg-primary/8 text-primary font-medium"
-                : "text-muted-foreground hover:bg-[color:var(--surface-hover)]"
+                ? "bg-primary/15 text-primary font-medium"
+                : "text-white/70 hover:text-white/90 hover:bg-[color:var(--surface-hover)]"
             )}
           >
             <item.icon className="w-4 h-4 shrink-0" />
@@ -98,7 +101,7 @@ function SidebarCrossTabLinks({ collapsed }: { collapsed: boolean }) {
       <Link
         href="/challenges"
         style={{ paddingTop: "var(--nav-item-py)", paddingBottom: "var(--nav-item-py)" }}
-        className="flex items-center gap-3 px-3 rounded-md text-sm text-muted-foreground hover:bg-[color:var(--surface-hover)] transition-colors duration-100"
+        className="flex items-center gap-3 px-3 rounded-md text-sm text-white/50 hover:text-white/80 hover:bg-[color:var(--surface-hover)] transition-colors duration-100"
       >
         <Lightbulb className="w-4 h-4 shrink-0" />
         {!collapsed && <span>My Approach</span>}
@@ -106,7 +109,7 @@ function SidebarCrossTabLinks({ collapsed }: { collapsed: boolean }) {
       <Link
         href="/proposal"
         style={{ paddingTop: "var(--nav-item-py)", paddingBottom: "var(--nav-item-py)" }}
-        className="flex items-center gap-3 px-3 rounded-md text-sm text-muted-foreground hover:bg-[color:var(--surface-hover)] transition-colors duration-100"
+        className="flex items-center gap-3 px-3 rounded-md text-sm text-white/50 hover:text-white/80 hover:bg-[color:var(--surface-hover)] transition-colors duration-100"
       >
         <User className="w-4 h-4 shrink-0" />
         {!collapsed && <span>Work With Me</span>}
@@ -141,9 +144,9 @@ function SidebarFooter({ collapsed }: { collapsed: boolean }) {
   return (
     <div className="border-t border-border/40 p-2 space-y-1">
       {!collapsed && (
-        <p className="px-3 text-xs text-muted-foreground/80">
+        <p className="px-3 text-xs text-white/40">
           Built for{" "}
-          <span className="text-foreground/70 font-medium">
+          <span className="text-white/60 font-medium">
             {APP_CONFIG.projectName}
           </span>{" "}
           by Humam
@@ -153,7 +156,7 @@ function SidebarFooter({ collapsed }: { collapsed: boolean }) {
         href="https://github.com/HumamAl"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-2 px-3 py-1.5 rounded-md text-[11px] text-primary/70 hover:text-primary hover:bg-primary/8 transition-colors duration-100"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-md text-[11px] text-primary/60 hover:text-primary hover:bg-primary/10 transition-colors duration-100"
       >
         <Github className="w-3.5 h-3.5 shrink-0" />
         {!collapsed && <span>by Humam ↗</span>}

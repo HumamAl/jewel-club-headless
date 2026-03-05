@@ -106,13 +106,14 @@
   --surface-active: oklch(0.94 0 0);
 
   /* ── Primary Color ───────────────────────────────────────────
-     !! OVERRIDE REQUIRED — Layout Builder must replace --primary and
-        --primary-h with domain-appropriate oklch values.
-        See the Creative Brief's colorDirection for the target color.
-        QA rejects builds where --primary stays oklch(0.205 0 0). !! */
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --primary-h: 270; /* Integer hue extracted from --primary */
+     AESTHETIC: dark-premium / DOMAIN: luxury-jewelry
+     Creative rationale: Warm gold/amber on near-black. Gold is the
+     universal luxury jewelry color — matches Tiffany's backend and
+     Shopify Plus admin adapted for the premium jewelry context.
+     Motion character: smooth (150-200ms ease-in-out).              */
+  --primary: oklch(0.75 0.15 75);          /* Warm gold */
+  --primary-foreground: oklch(0.12 0 0);   /* Dark text on gold */
+  --primary-h: 75;                          /* Gold/amber hue integer */
 
   /* ── Derived Color Tokens ────────────────────────────────── */
   --section-dark: oklch(0.10 0.02 var(--primary-h));
@@ -120,8 +121,8 @@
   --secondary-foreground: oklch(0.205 0 0);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --accent: oklch(0.68 0.12 55);           /* Warm amber accent */
+  --accent-foreground: oklch(0.12 0 0);
 
   /* ── Semantic Colors ─────────────────────────────────────── */
   --destructive: oklch(0.577 0.245 27.325);
@@ -133,27 +134,27 @@
   /* ── Borders & Inputs ────────────────────────────────────── */
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: oklch(0.75 0.15 75);             /* Matches --primary (gold) */
 
   /* ── Chart Colors ────────────────────────────────────────────
-     Layout Builder harmonizes to primary hue. See design-system.md. */
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
+     Harmonized to gold/amber hue (75). Anchored at primary hue,
+     rotating +30 degree increments around the wheel.           */
+  --chart-1: oklch(0.75 0.15 75);          /* Gold — matches primary */
+  --chart-2: oklch(0.70 0.13 105);         /* Yellow-green (+30) */
+  --chart-3: oklch(0.65 0.12 45);          /* Amber-orange (-30) */
+  --chart-4: oklch(0.68 0.14 135);         /* Green (+60) */
+  --chart-5: oklch(0.72 0.11 15);          /* Red-orange (-60) */
 
   /* ── Sidebar Colors ──────────────────────────────────────────
-     After color override: --sidebar-primary and --sidebar-ring
-     should match --primary.                                     */
+     --sidebar-primary and --sidebar-ring match --primary.       */
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.75 0.15 75);  /* Matches --primary (gold) */
+  --sidebar-primary-foreground: oklch(0.12 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --sidebar-ring: oklch(0.75 0.15 75);     /* Matches --primary (gold) */
 
   /* ── Surface / Card Tokens ───────────────────────────────────
      Driven by [data-theme] aesthetic — not overridden per domain.
@@ -967,6 +968,23 @@
     box-shadow: 2px 2px 0 oklch(0.10 0 0);
   }
 
+}
+
+/* ── Staggered card reveal animation ─────────────────────────
+   Used by stat cards and activity rows on mount.              */
+@keyframes fade-up-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up-in {
+  animation-name: fade-up-in;
+  animation-timing-function: ease-out;
 }
 
 /* ── Frame utility classes ─────────────────────────────────── */
