@@ -1,6 +1,6 @@
 Hi,
 
-Three channels off one content model is where most headless setups fall apart. Built a working demo of how I'd approach it for a jewelry members club: {VERCEL_URL}
+Three channels off one content model is where most headless setups fall apart. Built a working demo of how I'd approach it for a jewelry members club: https://jewel-club-headless.vercel.app
 
 The demo covers member tiers, product catalog, and a kiosk-ready view that strips the nav for in-store use. WordPress stays as the CMS backend — editors don't touch code.
 
